@@ -1,0 +1,6 @@
+jmx_prometheus_httpserver-0.15.0/jmx_prometheus_httpserver-0.15.0-jar-with-dependencies.jar:
+  size: 410366
+  sha: sha256:bf1efd2efed79db93f01f2d915c0429653cf55d97baecf035ee7ca89ecd6233b
+jmx_prometheus_javaagent_0.15.0/jmx_prometheus_javaagent-0.15.0.jar:
+  size: 418240
+  sha: sha256:da1abbb8b553a21ff215a07ff9abf80f0ecb16b63c790b1c296b7959de117e9e

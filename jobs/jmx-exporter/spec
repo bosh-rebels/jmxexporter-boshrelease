@@ -1,0 +1,21 @@
+---
+name: jmx-exporter
+
+templates:
+  bin/ctl.erb: bin/ctl
+  config/kafka.yml.erb: config/kafka.yml
+  config/zookeeper.yml.erb: config/zookeeper.yml
+  config/all.yml.erb: config/all.yml
+
+packages:
+- jmx-exporter
+
+properties:
+  jmx.port:
+    default: 5555
+
+  http.port:
+    default: 8080
+
+  config_file:
+    default: all.yml

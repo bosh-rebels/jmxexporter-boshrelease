@@ -1,0 +1,5 @@
+check process jmx-exporter
+  with pidfile /var/vcap/sys/run/jmx-exporter/pid
+  start program "/var/vcap/jobs/jmx-exporter/bin/ctl start"
+  stop program "/var/vcap/jobs/jmx-exporter/bin/ctl stop"
+  group vcap

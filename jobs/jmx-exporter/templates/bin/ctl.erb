@@ -1,0 +1,33 @@
+#!/bin/bash
+
+RUN_DIR=/var/vcap/sys/run/jmx-exporter
+LOG_DIR=/var/vcap/sys/log/jmx-exporter
+PIDFILE=${RUN_DIR}/pid
+
+source /var/vcap/packages/openjdk-8*/bosh/runtime.env
+
+case $1 in
+
+  start)
+    mkdir -p $RUN_DIR $LOG_DIR
+    chown -R vcap:vcap $RUN_DIR $LOG_DIR
+
+    echo $$ > $PIDFILE
+
+    exec java -jar /var/vcap/packages/jmx-exporter/jmx_prometheus_httpserver-0.15.0-jar-with-dependencies.jar \
+      <%= p('http.port') %> /var/vcap/jobs/jmx-exporter/config/<%= p('config_file') %> \
+      >>  $LOG_DIR/jmx-exporter.stdout.log \
+      2>> $LOG_DIR/jmx-exporter.stderr.log
+
+    ;;
+
+  stop)
+    kill -9 `cat $PIDFILE`
+    rm -f $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: ctl {start|stop}" ;;
+
+esac

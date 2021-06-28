@@ -1,0 +1,6 @@
+---
+name: jmx-exporter
+blobstore:
+  provider: local
+  options:
+    blobstore_path: /tmp/test-blobs
